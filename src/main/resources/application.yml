@@ -1,0 +1,12 @@
+server:
+  port: 8089
+spring:
+  application:
+    name: Tastee
+  datasource:
+    url: jdbc:postgresql://localhost:5432/tastee
+    username: admin
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: none
