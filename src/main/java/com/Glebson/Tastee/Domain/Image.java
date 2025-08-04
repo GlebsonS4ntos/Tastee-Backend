@@ -16,7 +16,7 @@ public class Image implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String urlImg;
-    private String imgId;
+    private String imgIdCloudnary;
     @OneToOne(mappedBy = "image")
     private Post post;
 
@@ -39,12 +39,12 @@ public class Image implements Serializable {
         this.urlImg = urlImg;
     }
 
-    public String getImgId() {
-        return imgId;
+    public String getImgIdCloudnary() {
+        return imgIdCloudnary;
     }
 
-    public void setImgId(String imgId) {
-        this.imgId = imgId;
+    public void setImgIdCloudnary(String imgIdCloudnary) {
+        this.imgIdCloudnary = imgIdCloudnary;
     }
 
     public Post getPost() {
