@@ -1,8 +1,6 @@
 package com.Glebson.Tastee.Data.Dto;
 
 import com.Glebson.Tastee.Domain.Post;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
@@ -20,6 +18,7 @@ public class PostDto {
     private String content;
     @Size(min = 1, message = "Deve ter ao menos 1 Categoria.")
     private Set<CategoryDto> categories;
+    private String imageUrl;
 
     public PostDto() {
     }
@@ -70,6 +69,14 @@ public class PostDto {
 
     public void setCategories(Set<CategoryDto> categories) {
         this.categories = categories;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     @Override
