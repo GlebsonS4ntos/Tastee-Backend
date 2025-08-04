@@ -6,6 +6,7 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Post implements Serializable {
@@ -20,15 +21,19 @@ public class Post implements Serializable {
     private String title;
     @Column(length = 2000)
     private String content;
-    @ManyToMany()
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "post_category",
             joinColumns = @JoinColumn(name = "post_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id")
     )
-    private HashSet<Category> categories = new HashSet<>();
+    private Set<Category> categories;
 
     public Post() {
+    }
+
+    public void clearCategories(){
+        this.categories = new HashSet<>();
     }
 
     public Long getId() {
@@ -55,11 +60,11 @@ public class Post implements Serializable {
         this.content = content;
     }
 
-    public HashSet<Category> getCategories() {
+    public Set<Category> getCategories() {
         return categories;
     }
 
-    public void setCategories(HashSet<Category> categories) {
+    public void setCategories(Set<Category> categories) {
         this.categories = categories;
     }
 

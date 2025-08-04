@@ -6,8 +6,8 @@ import jakarta.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Category implements Serializable {
@@ -21,7 +21,7 @@ public class Category implements Serializable {
     @Column(length = 50)
     private String name;
     @ManyToMany(mappedBy = "categories")
-    private HashSet<Post> posts = new HashSet<>();
+    private Set<Post> posts;
 
     public Category() {
     }
@@ -42,11 +42,11 @@ public class Category implements Serializable {
         this.name = name;
     }
 
-    public HashSet<Post> getPosts() {
+    public Set<Post> getPosts() {
         return posts;
     }
 
-    public void setPosts(HashSet<Post> posts) {
+    public void setPosts(Set<Post> posts) {
         this.posts = posts;
     }
 
