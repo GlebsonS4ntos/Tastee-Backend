@@ -28,6 +28,9 @@ public class Post implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "category_id")
     )
     private Set<Category> categories;
+    @OneToOne(optional = true)
+    @JoinColumn(name = "image_id")
+    private Image image;
 
     public Post() {
     }
@@ -66,6 +69,14 @@ public class Post implements Serializable {
 
     public void setCategories(Set<Category> categories) {
         this.categories = categories;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
     }
 
     @Override
