@@ -1,5 +1,6 @@
 package com.Glebson.Tastee.Infra;
 
+import com.Glebson.Tastee.Exceptions.BadRequestException;
 import com.Glebson.Tastee.Exceptions.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,5 +19,10 @@ public class RestControllerException extends ResponseEntityExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ResponseException> defaultExceptionHandler(Exception e){
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ResponseException(HttpStatus.INTERNAL_SERVER_ERROR, HttpStatus.INTERNAL_SERVER_ERROR.value(), "Internal error."));
+    }
+
+    @ExceptionHandler(BadRequestException.class)
+    public ResponseEntity<ResponseException> badRequestExceptionHandler(BadRequestException b){
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseException(HttpStatus.BAD_REQUEST, HttpStatus.BAD_REQUEST.value(), b.getMessage()));
     }
 }
