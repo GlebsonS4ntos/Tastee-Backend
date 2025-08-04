@@ -1,17 +1,24 @@
 package com.Glebson.Tastee.Data.Dto;
 
-import com.Glebson.Tastee.Domain.Category;
 import com.Glebson.Tastee.Domain.Post;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
-import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class PostDto {
     private Long id;
+    @NotBlank
+    @Size(min = 3, max = 50, message = "O Titulo deve ter entre 3 e 50 caracteres.")
     private String title;
+    @NotBlank
+    @Size(min = 10, max = 2000, message = "O Conteudo deve ter entre 10 e 2000 caracteres.")
     private String content;
+    @Size(min = 1, message = "Deve ter ao menos 1 Categoria.")
     private Set<CategoryDto> categories;
 
     public PostDto() {

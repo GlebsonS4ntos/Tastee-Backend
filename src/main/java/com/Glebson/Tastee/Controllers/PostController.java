@@ -3,6 +3,7 @@ package com.Glebson.Tastee.Controllers;
 import com.Glebson.Tastee.Data.Dto.PostDto;
 import com.Glebson.Tastee.Exceptions.NotFoundException;
 import com.Glebson.Tastee.Services.PostService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +31,7 @@ public class PostController {
     }
 
     @PostMapping
-    public ResponseEntity<PostDto> createPost(@RequestBody PostDto dto){
+    public ResponseEntity<PostDto> createPost(@Valid @RequestBody PostDto dto){
         return ResponseEntity.status(HttpStatus.CREATED).body(service.createPost(dto));
     }
 
@@ -41,7 +42,7 @@ public class PostController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity updatePost(@RequestBody PostDto dto, @PathVariable Long id){
+    public ResponseEntity updatePost(@Valid @RequestBody PostDto dto, @PathVariable Long id){
         service.updatePost(dto, id);
         return ResponseEntity.noContent().build();
     }
