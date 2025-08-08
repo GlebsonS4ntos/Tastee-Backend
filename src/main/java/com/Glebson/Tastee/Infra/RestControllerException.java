@@ -1,6 +1,7 @@
 package com.Glebson.Tastee.Infra;
 
 import com.Glebson.Tastee.Exceptions.BadRequestException;
+import com.Glebson.Tastee.Exceptions.ImgException;
 import com.Glebson.Tastee.Exceptions.NotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -52,6 +53,11 @@ public class RestControllerException extends ResponseEntityExceptionHandler {
         body.put("messages", errors);
 
         return new ResponseEntity<>(body, headers, status);
+    }
+
+    @ExceptionHandler(ImgException.class)
+    public ResponseEntity<ResponseException> imgExceptionHandler(ImgException i){
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseException(HttpStatus.BAD_REQUEST, HttpStatus.BAD_REQUEST.value(), i.getMessage()));
     }
 
 }
