@@ -17,7 +17,8 @@ public class Image implements Serializable {
     private Long id;
     private String urlImg;
     private String imgIdCloudnary;
-    @OneToOne(mappedBy = "image")
+    @OneToOne
+    @JoinColumn(name = "post_id")
     private Post post;
 
     public Image() {

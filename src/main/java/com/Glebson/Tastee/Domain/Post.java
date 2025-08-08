@@ -28,8 +28,7 @@ public class Post implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "category_id")
     )
     private Set<Category> categories;
-    @OneToOne(optional = true)
-    @JoinColumn(name = "image_id")
+    @OneToOne(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Image image;
 
     public Post() {
