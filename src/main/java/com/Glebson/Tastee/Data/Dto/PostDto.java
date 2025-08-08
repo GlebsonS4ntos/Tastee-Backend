@@ -28,6 +28,7 @@ public class PostDto {
         this.title = p.getTitle();
         this.content = p.getContent();
         this.categories = p.getCategories().stream().map(c -> new CategoryDto(c)).collect(Collectors.toSet());
+        if (p.getImage() != null) this.imageUrl = p.getImage().getUrlImg();
     }
 
     public Post convertToEntity(){
