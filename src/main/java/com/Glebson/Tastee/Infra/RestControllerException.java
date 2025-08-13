@@ -3,6 +3,7 @@ package com.Glebson.Tastee.Infra;
 import com.Glebson.Tastee.Exceptions.BadRequestException;
 import com.Glebson.Tastee.Exceptions.ImgException;
 import com.Glebson.Tastee.Exceptions.NotFoundException;
+import com.Glebson.Tastee.Exceptions.PdfException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -60,4 +61,8 @@ public class RestControllerException extends ResponseEntityExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseException(HttpStatus.BAD_REQUEST, HttpStatus.BAD_REQUEST.value(), i.getMessage()));
     }
 
+    @ExceptionHandler(PdfException.class)
+    public ResponseEntity<ResponseException> pdfExceptionHandler(PdfException p){
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseException(HttpStatus.BAD_REQUEST, HttpStatus.BAD_REQUEST.value(), p.getMessage()));
+    }
 }
