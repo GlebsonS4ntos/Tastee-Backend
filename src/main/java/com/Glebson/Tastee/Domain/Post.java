@@ -78,6 +78,13 @@ public class Post implements Serializable {
         this.image = image;
     }
 
+    public String getUrlImg() {
+        if (image != null && image.getUrlImg() != null) {
+            return image.getUrlImg();
+        }
+        return "";
+    }
+
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Post post)) return false;
